@@ -1,2 +1,2 @@
-FROM httpd
+FROM alpine
 RUN mkdir /tmp/data
