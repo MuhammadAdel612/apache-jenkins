@@ -2,7 +2,7 @@ pipeline {
     agent any
     
      environment {
-        SERVICE_NAME = "maven"
+        SERVICE_NAME = "apache"
         ORGANIZATION_NAME = "muhammadadel8"
         DOCKERHUB_USERNAME = "muhammadadel8"
         REPOSITORY_TAG = "${DOCKERHUB_USERNAME}/${ORGANIZATION_NAME}-${SERVICE_NAME}:${BUILD_ID}"
