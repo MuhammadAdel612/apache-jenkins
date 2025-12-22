@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: apache
-        image: muhammadadel8/muhammadadel8-apache:{{BUILD_NUMBER}}
+        image: muhammadadel8/muhammadadel8-apache:${BUILD_NUMBER}
         resources:
           requests:
              memory: 512Mi
