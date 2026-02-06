@@ -14,7 +14,7 @@ pipeline {
        
        stage ('Deploy to Cluster') {
             steps {
-                sh "oc apply -f -"
+                sh "oc apply -f maven-deploy.yml"
                 }
             }
 }
