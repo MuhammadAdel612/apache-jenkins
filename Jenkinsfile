@@ -1,13 +1,6 @@
 pipeline {
     agent any
     
-     environment {
-        SERVICE_NAME = "httpd"
-        ORGANIZATION_NAME = "muhammadadel8"
-        DOCKERHUB_USERNAME = "muhammadadel8"
-        REPOSITORY_TAG = "${DOCKERHUB_USERNAME}/${ORGANIZATION_NAME}-${SERVICE_NAME}:${BUILD_ID}"
-    }
-    
    
    stages {
        stage ('git checkout') {
@@ -17,18 +10,11 @@ pipeline {
        }
       
        
-        stage ('Build and Push Image') {
-            steps {
-                 withDockerRegistry([credentialsId: 'docker-id', url: ""]) {
-                   sh 'docker build -t ${REPOSITORY_TAG} .'
-                   sh 'docker push ${REPOSITORY_TAG}'          
-            }
-          }
-       }
+
        
        stage ('Deploy to Cluster') {
             steps {
-                sh "cat maven-deploy.yml | sed 's/{{BUILD_NUMBER}}/${BUILD_NUMBER}/g' | kubectl apply -f -"
+                sh "oc apply -f -"
                 }
             }
 }
